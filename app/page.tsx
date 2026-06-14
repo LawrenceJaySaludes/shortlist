@@ -1,65 +1,137 @@
+import { Playfair_Display } from "next/font/google";
 import Image from "next/image";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+});
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-screen bg-[#020617] text-white">
+      <section className="mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 text-center">
+        
+      <div className="mb-6">
+  <Image
+    src="/shortlist.svg"
+    alt="ShortList Logo"
+    width={140}
+    height={140}
+    priority
+    className="drop-shadow-[0_0_25px_rgba(6,182,212,0.25)]"
+  />
+</div>
+        
+        <div className="mb-6 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
+          AI-Powered Resume Match Analyzer
+        </div>
+
+<h1
+  className={`${playfair.className} max-w-3xl text-6xl font-semibold italic tracking-wide text-white drop-shadow-[0_0_25px_rgba(6,182,212,0.35)] md:text-8xl`}
+>
+  ShortList
+</h1>
+
+        <p className="mt-6 max-w-2xl text-lg text-slate-300">
+          Analyze your resume against any job description, improve your ATS
+          score, identify missing keywords, and generate a stronger resume with
+          AI.
+        </p>
+
+        <a
+          href="/analyzer"
+          className="mt-8 rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300"
+        >
+          Analyze My Resume
+        </a>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">
+          How It Works
+        </h2>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-4">
+          {[
+            ["1", "Upload or Paste Resume", "Upload a PDF or paste your resume text directly."],
+            ["2", "Add Job Description", "Paste the job description you want to apply for."],
+            ["3", "Get AI Analysis", "Receive ATS scores, missing keywords, and recruiter feedback."],
+            ["4", "Improve Your Resume", "Generate a stronger AI-improved resume draft."],
+          ].map(([number, title, desc]) => (
+            <div
+              key={number}
+              className="rounded-2xl border border-slate-800 bg-slate-950 p-6"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400 font-bold text-slate-950">
+                {number}
+              </div>
+              <h3 className="mt-5 text-lg font-bold">{title}</h3>
+              <p className="mt-3 text-sm text-slate-400">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <h2 className="text-center text-3xl font-bold md:text-4xl">
+          Why Use ShortList?
+        </h2>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {[
+            "ATS Compatibility Score",
+            "Missing Keyword Detection",
+            "AI Resume Improvements",
+            "Smart Line Reviews",
+            "Recruiter Verdict",
+            "Downloadable PDF Report",
+          ].map((feature) => (
+            <div
+              key={feature}
+              className="rounded-xl border border-slate-800 bg-slate-950 p-5 text-slate-300"
             >
-              Learning
-            </a>{" "}
-            center.
+              <span className="text-cyan-300">✓</span> {feature}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-4xl px-6 py-20 text-center">
+        <h2 className="text-3xl font-bold md:text-4xl">
+          Ready to improve your resume?
+        </h2>
+
+        <p className="mt-4 text-slate-400">
+          Match your resume with a job description and get instant AI feedback.
+        </p>
+
+        <a
+          href="/analyzer"
+          className="mt-8 inline-block rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300"
+        >
+          Start Analyzing
+        </a>
+      </section>
+
+      <footer className="border-t border-slate-800 py-10">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <p className="text-sm leading-relaxed text-slate-500">
+            ShortList provides AI-powered resume analysis, ATS scoring, and
+            resume optimization suggestions. Results are generated by artificial
+            intelligence and should be reviewed before making employment or
+            career decisions.
           </p>
+
+          <div className="mt-6 space-y-2">
+            <p className="text-xs text-slate-600">
+              © 2026 ShortList. All Rights Reserved.
+            </p>
+
+            <p className="text-xs text-slate-600">
+              Designed & Developed by Lawrence Saludes.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }
