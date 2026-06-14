@@ -45,7 +45,7 @@ ${resumeText}
 Job Description:
 ${jobDescription}
 
-Return JSON only. Do not use markdown. Do not wrap the response in triple backticks.
+Return only valid JSON. Do not include markdown, explanations, comments, or triple backticks. The response must start with { and end with }.
 
 Return this exact JSON structure:
 {

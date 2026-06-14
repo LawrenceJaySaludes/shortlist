@@ -155,11 +155,23 @@ setTimeout(() => {
         return;
       }
 
-      const cleaned = cleanJsonResponse(data.result);
-      const parsed = JSON.parse(cleaned) as AnalysisResult;
+     const cleaned = cleanJsonResponse(data.result);
 
-      setResult(parsed);
-      setRawResult(cleaned);
+const jsonStart = cleaned.indexOf("{");
+const jsonEnd = cleaned.lastIndexOf("}");
+
+if (jsonStart === -1 || jsonEnd === -1) {
+  console.error("Invalid AI response:", cleaned);
+  setError("AI returned an invalid format. Please try again.");
+  return;
+}
+
+const jsonOnly = cleaned.slice(jsonStart, jsonEnd + 1);
+const parsed = JSON.parse(jsonOnly) as AnalysisResult;
+
+setResult(parsed);
+setRawResult(jsonOnly);
+
     } catch {
       setError("AI returned an invalid format. Please try again.");
     } finally {
